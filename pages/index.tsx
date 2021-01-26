@@ -38,9 +38,6 @@ export default function Home({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/" passHref={true}>
-          <Button className="Test">Get Started</Button>
-        </Link>
         <div className={styles.top_bar}>
           <Search onChange={(value) => setSearchTerm(value)} />
           <button type="button" onClick={darkMode.toggle}>
