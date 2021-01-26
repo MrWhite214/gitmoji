@@ -16,10 +16,10 @@ export default function Home({ data }) {
   useEffect(() => {
     const results = data.gitmojis.filter(
       (gitmoji) =>
-        gitmoji.code.toLowerCase().includes(searchTerm) ||
-        gitmoji.description.toLowerCase().includes(searchTerm) ||
-        gitmoji.emoji.toLowerCase().includes(searchTerm) ||
-        gitmoji.name.toLowerCase().includes(searchTerm),
+        gitmoji.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        gitmoji.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        gitmoji.emoji.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        gitmoji.name.toLowerCase().includes(searchTerm.toLowerCase()),
     )
     setSearchResults(results)
   }, [searchTerm])
@@ -58,9 +58,7 @@ export default function Home({ data }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(
-    `https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json`,
-  )
+  const res = await fetch(`https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json`)
   const data = await res.json()
 
   if (!data) {
